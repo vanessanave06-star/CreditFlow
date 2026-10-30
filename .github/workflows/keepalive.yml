@@ -1,0 +1,15 @@
+name: keepalive-supabase
+
+on:
+  schedule:
+    - cron: '17 6 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consulta simples ao Supabase
+        run: |
+          curl -fsS "https://ucbfklnrekiliiqxpkza.supabase.co/rest/v1/creditflow_state?select=id&limit=1" \
+            -H "apikey: sb_publishable_sdkKC-sca-ag6bGxPuNAmw_C-fvipBc"
